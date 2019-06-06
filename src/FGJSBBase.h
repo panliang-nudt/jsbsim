@@ -186,70 +186,70 @@ public:
   /** Converts from degrees Kelvin to degrees Fahrenheit.
   *   @param kelvin The temperature in degrees Kelvin.
   *   @return The temperature in Fahrenheit. */
-  static constexpr double KelvinToFahrenheit (double kelvin) {
+  static double KelvinToFahrenheit (double kelvin) {
     return 1.8*kelvin - 459.4;
   }
 
   /** Converts from degrees Celsius to degrees Rankine.
   *   @param celsius The temperature in degrees Celsius.
   *   @return The temperature in Rankine. */
-  static constexpr double CelsiusToRankine (double celsius) {
+  static double CelsiusToRankine (double celsius) {
     return celsius * 1.8 + 491.67;
   }
 
   /** Converts from degrees Rankine to degrees Celsius.
   *   @param rankine The temperature in degrees Rankine.
   *   @return The temperature in Celsius. */
-  static constexpr double RankineToCelsius (double rankine) {
+  static double RankineToCelsius (double rankine) {
     return (rankine - 491.67)/1.8;
   }
 
   /** Converts from degrees Kelvin to degrees Rankine.
   *   @param kelvin The temperature in degrees Kelvin.
   *   @return The temperature in Rankine. */
-  static constexpr double KelvinToRankine (double kelvin) {
+  static double KelvinToRankine (double kelvin) {
     return kelvin * 1.8;
   }
 
   /** Converts from degrees Rankine to degrees Kelvin.
   *   @param rankine The temperature in degrees Rankine.
   *   @return The temperature in Kelvin. */
-  static constexpr double RankineToKelvin (double rankine) {
+  static double RankineToKelvin (double rankine) {
     return rankine/1.8;
   }
 
   /** Converts from degrees Fahrenheit to degrees Celsius.
   *   @param fahrenheit The temperature in degrees Fahrenheit.
   *   @return The temperature in Celsius. */
-  static constexpr double FahrenheitToCelsius (double fahrenheit) {
+  static double FahrenheitToCelsius (double fahrenheit) {
     return (fahrenheit - 32.0)/1.8;
   }
 
   /** Converts from degrees Celsius to degrees Fahrenheit.
   *   @param celsius The temperature in degrees Celsius.
   *   @return The temperature in Fahrenheit. */
-  static constexpr double CelsiusToFahrenheit (double celsius) {
+  static double CelsiusToFahrenheit (double celsius) {
     return celsius * 1.8 + 32.0;
   }
 
   /** Converts from degrees Celsius to degrees Kelvin
   *   @param celsius The temperature in degrees Celsius.
   *   @return The temperature in Kelvin. */
-  static constexpr double CelsiusToKelvin (double celsius) {
+  static double CelsiusToKelvin (double celsius) {
     return celsius + 273.15;
   }
 
   /** Converts from degrees Kelvin to degrees Celsius
   *   @param celsius The temperature in degrees Kelvin.
   *   @return The temperature in Celsius. */
-  static constexpr double KelvinToCelsius (double kelvin) {
+  static double KelvinToCelsius (double kelvin) {
     return kelvin - 273.15;
   }
 
   /** Converts from feet to meters
   *   @param measure The length in feet.
   *   @return The length in meters. */
-  static constexpr double FeetToMeters (double measure) {
+  static double FeetToMeters (double measure) {
     return measure*0.3048;
   }
 
@@ -324,11 +324,11 @@ public:
   
   /** Constrain a value between a minimum and a maximum value.
   */
-  static constexpr double Constrain(double min, double value, double max) {
+  static double Constrain(double min, double value, double max) {
     return value<min?(min):(value>max?(max):(value));
   }
   
-  static constexpr double sign(double num) {return num>=0.0?1.0:-1.0;}
+  static double sign(double num) {return num>=0.0?1.0:-1.0;}
 
   static double GaussianRandomNumber(void);
 
@@ -339,28 +339,28 @@ protected:
 
   static unsigned int messageId;
 
-  static constexpr double radtodeg = 180. / M_PI;
-  static constexpr double degtorad = M_PI / 180.;
-  static constexpr double hptoftlbssec = 550.0;
-  static constexpr double psftoinhg = 0.014138;
-  static constexpr double psftopa = 47.88;
-  static constexpr double ktstofps = 1.68781;
-  static constexpr double fpstokts = 1.0 / ktstofps;
-  static constexpr double inchtoft = 1.0/12.0;
-  static constexpr double fttom = 0.3048;
-  static constexpr double m3toft3 = 1.0/(fttom*fttom*fttom);
-  static constexpr double in3tom3 = inchtoft*inchtoft*inchtoft/m3toft3;
-  static constexpr double inhgtopa = 3386.38;
+  static const double radtodeg; // = 180. / M_PI;
+  static const double degtorad; // = M_PI / 180.;
+  static const double hptoftlbssec; // = 550.0;
+  static const double psftoinhg; // = 0.014138;
+  static const double psftopa; // = 47.88;
+  static const double ktstofps; // = 1.68781;
+  static const double fpstokts; // = 1.0 / ktstofps;
+  static const double inchtoft; // = 1.0/12.0;
+  static const double fttom; // = 0.3048;
+  static const double m3toft3; // = 1.0/(fttom*fttom*fttom);
+  static const double in3tom3; // = inchtoft*inchtoft*inchtoft/m3toft3;
+  static const double inhgtopa; // = 3386.38;
   /** Note that definition of lbtoslug by the inverse of slugtolb and not to a
       different constant you can also get from some tables will make
       lbtoslug*slugtolb == 1 up to the magnitude of roundoff. So converting from
       slug to lb and back will yield to the original value you started with up
       to the magnitude of roundoff.
       Taken from units gnu commandline tool */
-  static constexpr double slugtolb = 32.174049;
-  static constexpr double lbtoslug = 1.0/slugtolb;
-  static constexpr double kgtolb = 2.20462;
-  static constexpr double kgtoslug = 0.06852168;
+  static const double slugtolb; // = 32.174049;
+  static const double lbtoslug; // = 1.0/slugtolb;
+  static const double kgtolb; // = 2.20462;
+  static const double kgtoslug; // = 0.06852168;
   static const std::string needed_cfg_version;
   static const std::string JSBSim_version;
 

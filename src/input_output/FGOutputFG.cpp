@@ -120,8 +120,11 @@ CLASS IMPLEMENTATION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 
 FGOutputFG::FGOutputFG(FGFDMExec* fdmex) :
-  FGOutputSocket(fdmex), outputOptions{false, 1e6}
+  FGOutputSocket(fdmex)
 {
+  outputOptions.useSimTime = false;
+  outputOptions.timeFactor = 1e6;
+
   memset(&fgSockBuf, 0x0, sizeof(fgSockBuf));
 
   if (fdmex->GetDebugLevel() > 0) {

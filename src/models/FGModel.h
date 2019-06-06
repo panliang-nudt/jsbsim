@@ -72,7 +72,7 @@ public:
   /// Constructor
   explicit FGModel(FGFDMExec*);
   /// Destructor
-  ~FGModel() override;
+  ~FGModel();
 
   /** Runs the model; called by the Executive.
       Can pass in a value indicating if the executive is directing the simulation to Hold.
@@ -85,7 +85,7 @@ public:
       @return false if no error */
   virtual bool Run(bool Holding);
 
-  bool InitModel(void) override;
+  bool InitModel(void);
   /// Set the ouput rate for the model in frames
   void SetRate(unsigned int tt) {rate = tt;}
   /// Get the output rate for the model in frames

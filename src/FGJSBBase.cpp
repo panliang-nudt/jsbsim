@@ -74,6 +74,29 @@ CLASS IMPLEMENTATION
     char FGJSBBase::fgdef[6]    = {'\0' };
 #endif
 
+const double FGJSBBase::radtodeg = 180. / M_PI;
+const double FGJSBBase::degtorad = M_PI / 180.;
+const double FGJSBBase::hptoftlbssec = 550.0;
+const double FGJSBBase::psftoinhg = 0.014138;
+const double FGJSBBase::psftopa = 47.88;
+const double FGJSBBase::ktstofps = 1.68781;
+const double FGJSBBase::fpstokts = 1.0 / ktstofps;
+const double FGJSBBase::inchtoft = 1.0/12.0;
+const double FGJSBBase::fttom = 0.3048;
+const double FGJSBBase::m3toft3 = 1.0/(fttom*fttom*fttom);
+const double FGJSBBase::in3tom3 = inchtoft*inchtoft*inchtoft/m3toft3;
+const double FGJSBBase::inhgtopa = 3386.38;
+/** Note that definition of lbtoslug by the inverse of slugtolb and not to a
+  different constant you can also get from some tables will make
+  lbtoslug*slugtolb == 1 up to the magnitude of roundoff. So converting from
+  slug to lb and back will yield to the original value you started with up
+  to the magnitude of roundoff.
+  Taken from units gnu commandline tool */
+const double FGJSBBase::slugtolb = 32.174049;
+const double FGJSBBase::lbtoslug = 1.0/slugtolb;
+const double FGJSBBase::kgtolb = 2.20462;
+const double FGJSBBase::kgtoslug = 0.06852168;
+
 const string FGJSBBase::needed_cfg_version = "2.0";
 const string FGJSBBase::JSBSim_version = JSBSIM_VERSION " " __DATE__ " " __TIME__ ;
 

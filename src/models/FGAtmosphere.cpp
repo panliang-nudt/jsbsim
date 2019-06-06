@@ -46,6 +46,12 @@ INCLUDES
 #include "FGAtmosphere.h"
 
 namespace JSBSim {
+const double FGAtmosphere::StdDaySLtemperature = 518.67;
+const double FGAtmosphere::StdDaySLpressure = 2116.228;
+const double FGAtmosphere::SutherlandConstant = 198.72;  // deg Rankine
+const double FGAtmosphere::Beta = 2.269690E-08; // slug/(sec ft R^0.5)
+
+const double FGAtmosphere::SHRatio = 1.4;
 
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 CLASS IMPLEMENTATION
@@ -53,6 +59,19 @@ CLASS IMPLEMENTATION
 
 // Atmosphere constants in British units converted from the SI values specified in the 
 // ISA document - https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/19770009539.pdf
+
+/// Universal gas constant - ft*lbf/R/mol
+const double FGAtmosphere::Rstar = 8.31432 * kgtoslug / KelvinToRankine(fttom * fttom);
+/// Mean molecular weight for air - slug/mol
+const double FGAtmosphere::Mair = 28.9645 * kgtoslug / 1000.0;
+
+/** Sea-level acceleration of gravity - ft/s^2.
+  This constant is defined to compute the International Standard Atmosphere.
+  It is by definition the sea level gravity at a latitude of 45deg. This
+  value is fixed whichever gravity model is used by FGInertial.
+*/
+const double FGAtmosphere::g0 = 9.80665 / fttom;
+  
 double FGAtmosphere::Reng = Rstar / Mair;
 
 const double FGAtmosphere::StdDaySLsoundspeed = sqrt(SHRatio*Reng*StdDaySLtemperature);

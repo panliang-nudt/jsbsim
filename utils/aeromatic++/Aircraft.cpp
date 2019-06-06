@@ -86,7 +86,12 @@ Aircraft::get_verbose_description(int no_engines)
         if (no_engines < 0) rv += ')';
     }
 
+// includes both MSVC and mingw compilers
+#if (defined(_WIN32) || defined(__WIN32__)) && _MSC_VER<=1800
+    _snprintf(desc, 1024, "%s", rv.c_str());
+#else
     snprintf(desc, 1024, "%s", rv.c_str());
+#endif
     return desc;
 }
 

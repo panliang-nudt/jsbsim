@@ -210,8 +210,8 @@ public:
     double altitudeASL;
   } in;
 
-  static constexpr double StdDaySLtemperature = 518.67;
-  static constexpr double StdDaySLpressure = 2116.228;
+  static const double StdDaySLtemperature;// = 518.67;
+  static const double StdDaySLpressure;// = 2116.228;
   static const double StdDaySLsoundspeed;
 
 protected:
@@ -221,8 +221,8 @@ protected:
   double PressureAltitude;
   double DensityAltitude;
 
-  static constexpr double SutherlandConstant = 198.72;  // deg Rankine
-  static constexpr double Beta = 2.269690E-08; // slug/(sec ft R^0.5)
+  static const double SutherlandConstant;// = 198.72;  // deg Rankine
+  static const double Beta;// = 2.269690E-08; // slug/(sec ft R^0.5)
   double Viscosity, KinematicViscosity;
 
   /// Calculate the atmosphere for the given altitude.
@@ -257,20 +257,20 @@ protected:
   /// @name ISA constants
   //@{
   /// Universal gas constant - ft*lbf/R/mol
-  static constexpr double Rstar = 8.31432 * kgtoslug / KelvinToRankine(fttom * fttom);
+  static const double Rstar;// = 8.31432 * kgtoslug / KelvinToRankine(fttom * fttom);
   /// Mean molecular weight for air - slug/mol
-  static constexpr double Mair = 28.9645 * kgtoslug / 1000.0;
+  static const double Mair;// = 28.9645 * kgtoslug / 1000.0;
   /** Sea-level acceleration of gravity - ft/s^2.
       This constant is defined to compute the International Standard Atmosphere.
       It is by definition the sea level gravity at a latitude of 45deg. This
       value is fixed whichever gravity model is used by FGInertial.
   */
-  static constexpr double g0 = 9.80665 / fttom;
+  static const double g0;// = 9.80665 / fttom;
   /// Specific gas constant for air - ft*lbf/slug/R
   static double Reng;
   //@}
 
-  static constexpr double SHRatio = 1.4;
+  static const double SHRatio;// = 1.4;
 
   virtual void bind(void);
   void Debug(int from) override;

@@ -737,8 +737,9 @@ public:
     : cached(false), cachedValue(-HUGE_VAL), pNode(nullptr), pCopyTo(nullptr),
       PropertyManager(nullptr) {}
 
-  explicit FGFunction(FGPropertyManager* pm)
-    : FGFunction()
+  FGFunction(FGPropertyManager* pm)
+    : cached(false), cachedValue(-HUGE_VAL), pNode(nullptr), pCopyTo(nullptr),
+      PropertyManager(nullptr)
   { PropertyManager = pm; }
 
   /** Constructor.
@@ -764,22 +765,22 @@ public:
   /** Destructor
       Make sure the function is untied before destruction.
    */
-  ~FGFunction(void) override;
+  ~FGFunction(void);
 
 /** Retrieves the value of the function object.
     @return the total value of the function. */
-  double GetValue(void) const override;
+  double GetValue(void) const;
 
 /** The value that the function evaluates to, as a string.
   @return the value of the function as a string. */
   std::string GetValueAsString(void) const;
 
 /// Retrieves the name of the function.
-  std::string GetName(void) const override {return Name;}
+  std::string GetName(void) const {return Name;}
 
 /** Does the function always return the same result (i.e. does it apply to
     constant parameters) ? */
-  bool IsConstant(void) const override;
+  bool IsConstant(void) const;
 
 /** Specifies whether to cache the value of the function, so it is calculated
     only once per frame.
@@ -791,7 +792,7 @@ public:
     value. */
   void cacheValue(bool shouldCache);
 
-  enum class OddEven {Either, Odd, Even};
+  enum OddEven {Either, Odd, Even};
 
 protected:
   bool cached;

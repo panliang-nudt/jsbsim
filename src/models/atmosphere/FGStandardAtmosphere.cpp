@@ -52,6 +52,18 @@ INCLUDES
 
 namespace JSBSim {
 
+const double FGStandardAtmosphere::EarthRadius = 6356766.0 / fttom;
+  /** Sonntag constants based on ref [2]. They are valid for temperatures
+      between -45 degC (-49 degF) and 60 degC (140 degF) with a precision of
+      +/-0.35 degC (+/-0.63 degF) */
+const double FGStandardAtmosphere::a = 611.2/psftopa; // psf
+const double FGStandardAtmosphere::b = 17.62; // 1/degC
+const double FGStandardAtmosphere::c = 243.12; // degC
+  /// Mean molecular weight for water - slug/mol
+const double FGStandardAtmosphere::Mwater = 18.016 * kgtoslug / 1000.0;
+const double FGStandardAtmosphere::Rdry = Rstar / Mair;
+const double FGStandardAtmosphere::Rwater = Rstar / Mwater;
+
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 CLASS IMPLEMENTATION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
